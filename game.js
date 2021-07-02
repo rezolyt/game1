@@ -69,8 +69,9 @@ function lvlCheck(hero) {
     let lvlOld = hero.lvl;
     let lvlNew;
 for ( let index = 0; index < lvlMap.length; index++) {
-    const expNeed = lvlMap[index];
-    if (currentExp >= expNeed) {
+    const expNeedMax = lvlMap[index];
+    const expNeedMin = lvlMap[index - 1];
+    if ((currentExp < expNeedMax) && (currentExp >= expNeedMin)) {
         lvlNew = index + 1;
         hero.lvl = lvlNew;
     }
@@ -78,6 +79,7 @@ for ( let index = 0; index < lvlMap.length; index++) {
       break;
     }
 }
+
 if (lvlOld != lvlNew) {
     hero.points++;
 }
