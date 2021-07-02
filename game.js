@@ -1,10 +1,10 @@
 let caracters  = {
     hero: {
         lvl:1 ,
-        exp:10,
+        exp:0,
         str:5,
         hp:10,
-        points:0,
+        points:1,
     },
     zombie:{
         lvl:2,
@@ -19,7 +19,7 @@ let caracters  = {
         hp:999
     }
 };
-let lvlMap = [20,40,50,100]
+let lvlMap = [0,10,20,50,100,150]
 
 function cahar(hero) {
     alert(` lvl = ${hero.lvl},exp = ${hero.exp}, str = ${hero.str}, hp = ${hero.hp}, points = ${hero.points}`);
@@ -68,19 +68,18 @@ function lvlCheck(hero) {
     currentExp = hero.exp;
     let lvlOld = hero.lvl;
     let lvlNew;
-for ( let index = 0; index < lvlMap.length; index++) {
-    const expNeedMax = lvlMap[index];
-    const expNeedMin = lvlMap[index - 1];
-    if ((currentExp < expNeedMax) && (currentExp >= expNeedMin)) {
-        lvlNew = index + 1;
-        hero.lvl = lvlNew;
-    }
-    else {
-      break;
-    }
-}
+        for ( let index = 0; index < lvlMap.length; index++) {
+            const expNeedMax = lvlMap[index];
+            if (currentExp >= expNeedMax) {
+                lvlNew = index ;
+                hero.lvl = lvlNew;
+            }
+            else {
+            break;
+            }
+        }
 
-if (lvlOld != lvlNew) {
+if (lvlOld < lvlNew) {
     hero.points++;
 }
 else {
