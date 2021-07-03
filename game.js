@@ -68,16 +68,12 @@ function lvlCheck(hero) {
     currentExp = hero.exp;
     let lvlOld = hero.lvl;
     let lvlNew;
-        for ( let index = 0; index < lvlMap.length; index++) {
-            const expNeedMax = lvlMap[index];
-            if (currentExp >= expNeedMax) {
-                lvlNew = index ;
-                hero.lvl = lvlNew;
-            }
-            else {
-            break;
-            }
-        }
+    let i = 0;
+    do{
+        i++;        
+        lvlNew = i;
+        hero.lvl = lvlNew;
+    }     while (currentExp >= lvlMap[i] ) 
 
 if (lvlOld < lvlNew) {
     hero.points++;
@@ -87,17 +83,4 @@ else {
 }
 
 alert(`Your lvl whas ${lvlOld} new - ${lvlNew}, you have ${hero.points} points`);
-}
-function currentLvl(hero) {
-    currentExp = hero.exp;
-    let lvlOld = hero.lvl;
-    let lvl;
-    let i = 0;
-    while (currentExp < lvlMap[i] ) {
-        lvl = i;
-        i++;
-    }
-
-
-alert(`Your lvl  ${lvl}`);
 }
