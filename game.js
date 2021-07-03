@@ -23,13 +23,21 @@ let caracters  = {
 let lvlMap = [0,10,20,50,100,150]
 function start() {
     let name;
+    let yourName = document.querySelector(".yourName");
     name = prompt(`Set name of your Hero:`, 'Bob');
     caracters.name = name;
+    yourName.innerHTML += name;
+    let heroClass = document.querySelector(".hero");
+    heroClass.style.background = `url(asset/frames/elf_f_hit_anim_f0.png)`;
 }
 start();
 function cahar(hero) {
-    alert(`Name = ${caracters.name}, lvl = ${hero.lvl},exp = ${hero.exp}, str = ${hero.str}, hp = ${hero.hp}, points = ${hero.points}`);
+    alert(`lvl = ${hero.lvl},exp = ${hero.exp}, str = ${hero.str}, hp = ${hero.hp}, points = ${hero.points}`);
+
 }
+
+
+
 function powerUp(hero) {
     powerQ = +prompt(`${caracters.name} хочешь прокачать силу - введи 1, хотите прокачать жизнь введите 2 `, 0);
     if ((powerQ == 1 && (hero.points > 0))) {
