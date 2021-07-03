@@ -88,3 +88,16 @@ else {
 
 alert(`Your lvl whas ${lvlOld} new - ${lvlNew}, you have ${hero.points} points`);
 }
+function currentLvl(hero) {
+    currentExp = hero.exp;
+    let lvlOld = hero.lvl;
+    let lvlNew;
+    let i = 0;
+    while (currentExp < lvlMap[i] ) {
+        lvl = i;
+        i++;
+    }
+
+
+alert(`Your lvl  ${lvl}`);
+}
