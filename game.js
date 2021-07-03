@@ -20,15 +20,17 @@ let caracters  = {
         hp:999
     }
 };
-let lvlMap = [0,10,20,50,100,150]
+let lvlMap = [0,10,20,50,100,150];
+let heroClass = document.querySelector(".hero");
+let yourLvl = document.querySelector(".yourLvl");
+let yourName = document.querySelector(".yourName");
 function start() {
     let name;
-    let yourName = document.querySelector(".yourName");
     name = prompt(`Set name of your Hero:`, 'Bob');
-    caracters.name = name;
+    caracters.hero.name = name;
     yourName.innerHTML += name;
-    let heroClass = document.querySelector(".hero");
     heroClass.style.background = `url(asset/frames/elf_f_hit_anim_f0.png)`;
+    yourLvl.innerHTML = caracters.hero.lvl;
 }
 start();
 function cahar(hero) {
@@ -65,7 +67,7 @@ function battle(enemy) {
     if ( i < j) {
         caracters.hero.exp += enemy.exp;
       
-        alert(`${caracters.name}, you win and gain ${enemy.exp}`);
+        alert(`${caracters.hero.name}, you win and gain ${enemy.exp}`);
         lvlCheck(caracters.hero);
     }
     else {
@@ -74,7 +76,7 @@ function battle(enemy) {
         caracters.hero.lvl = 1;
         caracters.hero.str--;
         caracters.hero.hp = 10;
-        alert(`you loose,${caracters.name} your exp = 0`);
+        alert(`you loose,${caracters.hero.name} your exp = 0`);
     }
 }
 
@@ -87,11 +89,11 @@ function lvlCheck(hero) {
         i++;        
         lvlNew = i;
         hero.lvl = lvlNew;
-    }     while (currentExp >= lvlMap[i] ) 
-
+    }     while (currentExp >= lvlMap[i] ) ;
+    yourLvl.innerHTML = hero.lvl;
 if (lvlOld < lvlNew) {
     hero.points++;
-    alert(`Congratulations ${caracters.name}, you gain new lvl - ${lvlNew}! And get ${hero.points} points`);
+    alert(`You get ${hero.points} points`);
 }
 else {
     hero.points;
