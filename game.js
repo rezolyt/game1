@@ -1,10 +1,11 @@
 let caracters  = {
     hero: {
+        name:'',
         lvl:1 ,
         exp:0,
         str:5,
         hp:10,
-        points:1,
+        points:0,
     },
     zombie:{
         lvl:2,
@@ -20,12 +21,17 @@ let caracters  = {
     }
 };
 let lvlMap = [0,10,20,50,100,150]
-
+function start() {
+    let name;
+    name = prompt(`Set name of your Hero:`, 'Bob');
+    caracters.name = name;
+}
+start();
 function cahar(hero) {
-    alert(` lvl = ${hero.lvl},exp = ${hero.exp}, str = ${hero.str}, hp = ${hero.hp}, points = ${hero.points}`);
+    alert(`Name = ${caracters.name}, lvl = ${hero.lvl},exp = ${hero.exp}, str = ${hero.str}, hp = ${hero.hp}, points = ${hero.points}`);
 }
 function powerUp(hero) {
-    powerQ = +prompt(`Хотите прокачать силу - введите 1, хотите прокачать жизнь введите 2 `, 0);
+    powerQ = +prompt(`${caracters.name} хочешь прокачать силу - введи 1, хотите прокачать жизнь введите 2 `, 0);
     if ((powerQ == 1 && (hero.points > 0))) {
         hero.str++;
         hero.points--;
@@ -51,7 +57,7 @@ function battle(enemy) {
     if ( i < j) {
         caracters.hero.exp += enemy.exp;
       
-        alert(`you win and gain ${enemy.exp}`);
+        alert(`${caracters.name}, you win and gain ${enemy.exp}`);
         lvlCheck(caracters.hero);
     }
     else {
@@ -60,7 +66,7 @@ function battle(enemy) {
         caracters.hero.lvl = 1;
         caracters.hero.str--;
         caracters.hero.hp = 10;
-        alert(`you loose, your exp = 0`);
+        alert(`you loose,${caracters.name} your exp = 0`);
     }
 }
 
@@ -77,10 +83,9 @@ function lvlCheck(hero) {
 
 if (lvlOld < lvlNew) {
     hero.points++;
+    alert(`Congratulations ${caracters.name}, you gain new lvl - ${lvlNew}! And get ${hero.points} points`);
 }
 else {
     hero.points;
 }
-
-alert(`Your lvl whas ${lvlOld} new - ${lvlNew}, you have ${hero.points} points`);
 }
