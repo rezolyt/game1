@@ -50,6 +50,8 @@ margin: 10px 0;
     -ms-transition: opacity 0.1s ease-in;
     -o-transition: opacity 0.1s ease-in;
     opacity: 1;
+    background-position: 50%;
+    background-repeat: no-repeat;
 }
 .transitioning-src {
     transition: opacity 0.1s ease-out;
@@ -63,6 +65,8 @@ margin: 10px 0;
     position: absolute;
     top: 50%;
     left: 70%;
-    height: 16px;
+    height: 28px;
     width: 16px;
+    background-position: 50%;
+    background-repeat: no-repeat;
 }

@@ -11,17 +11,20 @@ let caracters  = {
         lvl:2,
         exp:10,
         str:2,
-        hp:10
+        hp:10,
+        img:'zombie_idle_anim_f0.png'
     },
     wizard:{
         lvl:999,
         exp:999,
         str:1,
-        hp:999
+        hp:999,
+        img:'wizzard_f_idle_anim_f0.png'
     }
 };
 let lvlMap = [0,10,20,50,100,150];
 let heroClass = document.querySelector(".hero");
+let enemyClass = document.querySelector(".enemy");
 let yourLvl = document.querySelector(".yourLvl");
 let yourName = document.querySelector(".yourName");
 function start() {
@@ -29,7 +32,7 @@ function start() {
     name = prompt(`Set name of your Hero:`, 'Bob');
     caracters.hero.name = name;
     yourName.innerHTML += name;
-    heroClass.style.background = `url(asset/frames/elf_f_hit_anim_f0.png)`;
+    heroClass.style.backgroundImage  = `url(asset/frames/elf_m_idle_anim_f3.png)`;
     yourLvl.innerHTML = caracters.hero.lvl;
 }
 start();
@@ -55,29 +58,43 @@ function powerUp(hero) {
     }
 }
 function battle(enemy) {
-    hp = enemy.hp;
-    let  i,j;
-    for (i = 0; hp > 0; i++) {
-        hp  = hp - caracters.hero.str;
-    }
-    hp = caracters.hero.hp;
-    for (j = 0; hp > 0; j++) {
-        hp  = hp - enemy.str;
-    }
-    if ( i < j) {
-        caracters.hero.exp += enemy.exp;
-      
-        alert(`${caracters.hero.name}, you win and gain ${enemy.exp}`);
-        lvlCheck(caracters.hero);
-    }
-    else {
-      
-        caracters.hero.exp = 0;
-        caracters.hero.lvl = 1;
-        caracters.hero.str--;
-        caracters.hero.hp = 10;
-        alert(`you loose,${caracters.hero.name} your exp = 0`);
-    }
+    heroClass.style.backgroundImage  = `url(asset/frames/elf_m_hit_anim_f0.png)`;
+    enemyClass.style.backgroundImage  = `url(asset/frames/${enemy.img})`;
+    let delayInMilliseconds = 1000; //1 second
+
+
+    setTimeout(function() {
+ 
+        hp = enemy.hp;
+        let  i,j;
+        for (i = 0; hp > 0; i++) {
+            hp  = hp - caracters.hero.str;
+        }
+        hp = caracters.hero.hp;
+        for (j = 0; hp > 0; j++) {
+            hp  = hp - enemy.str;
+        }
+        if ( i < j) {
+            caracters.hero.exp += enemy.exp;
+          
+            alert(`${caracters.hero.name}, you win and gain ${enemy.exp}`);
+            lvlCheck(caracters.hero);
+            enemyClass.style.backgroundImage  = `url(asset/frames/wall_goo.png)`;
+        }
+        else {
+          
+            caracters.hero.exp = 0;
+            caracters.hero.lvl = 1;
+            caracters.hero.str--;
+            caracters.hero.hp = 10;
+            yourLvl.innerHTML = caracters.hero.lvl;
+            alert(`you loose,${caracters.hero.name} your exp = 0`);
+            heroClass.style.backgroundImage  = `url(asset/frames/wall_goo.png)`;
+        }
+        heroClass.style.backgroundImage  = `url(asset/frames/elf_m_idle_anim_f3.png)`;
+       
+      }, delayInMilliseconds);
+   
 }
 
 function lvlCheck(hero) {
