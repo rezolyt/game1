@@ -80,6 +80,7 @@ function battle(enemy) {
             alert(`${caracters.hero.name}, you win and gain ${enemy.exp}`);
             lvlCheck(caracters.hero);
             enemyClass.style.backgroundImage  = `url(asset/frames/wall_goo.png)`;
+            heroClass.style.backgroundImage  = `url(asset/frames/elf_m_idle_anim_f3.png)`;
         }
         else {
           
@@ -91,7 +92,7 @@ function battle(enemy) {
             alert(`you loose,${caracters.hero.name} your exp = 0`);
             heroClass.style.backgroundImage  = `url(asset/frames/wall_goo.png)`;
         }
-        heroClass.style.backgroundImage  = `url(asset/frames/elf_m_idle_anim_f3.png)`;
+       
        
       }, delayInMilliseconds);
    
